@@ -1,0 +1,21 @@
+<mat-card>
+    <mat-card-content>
+        <mat-card class="p-2">
+            <h4>Profile Settings</h4>
+            <mat-tab-group class="mt-2" style='min-height:800px;'>
+                <mat-tab>
+                    <ng-template mat-tab-label>Appearance</ng-template>
+                    <mat-card-content>
+                        <app-space-tab-name></app-space-tab-name>
+                    </mat-card-content>
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>Members</ng-template>
+                    <mat-card-content>
+                        <app-space-tab-content></app-space-tab-content>
+                    </mat-card-content>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,356 @@
+<div class="app search-i" [dir]="layoutDir" [ngClass]="[ menuLayout, selectedSidebarImage, selectedSidebarColor, selectedHeaderColor, collapsedClass]" [class.app-dark]="dark" [class.boxed]="boxed" [class.collapsed-sidebar]="collapseSidebar" [class.compact-sidebar]="compactSidebar" [class.bg-img-disable]="!sidebarBg">
+<mat-sidenav-container class="app-inner">
+   <mat-sidenav #sidemenu class="sidebar-panel" id="sidebar-panel" [mode]="isOver() ? 'over' : 'side'" [opened]="!isOver()" (mouseover)="menuMouseOver()" (mouseout)="menuMouseOut()">
+   <div class="opt-side relative ">
+      <div class="sidebar-container ">
+         <div class="branding text-center">
+            <h2><i class="fa fa-superpowers" aria-hidden="true"></i> <span> Ricohc</span>
+            </h2>
+         </div>
+         <div class="main-nav">
+            <mat-nav-list appAccordion class="navigation relative">
+               <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getAll()">
+                  <a appAccordionToggle class="relative" mat-ripple [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
+                  <mat-icon>{{ menuitem.icon }}</mat-icon>
+                  <span>{{ menuitem.name | translate }}</span>
+                  <span fxFlex></span>
+                  <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+                  </a>
+                  <a appAccordionToggle class="relative" mat-ripple href="{{menuitem.state}}" *ngIf="menuitem.type === 'extLink'">
+                     <mat-icon>{{ menuitem.icon }}</mat-icon>
+                     <span>{{ menuitem.name | translate }}</span>
+                     <span fxFlex></span>
+                     <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+                  </a>
+                  <a appAccordionToggle class="relative" mat-ripple href="{{menuitem.state}}" target="_blank" *ngIf="menuitem.type === 'extTabLink'">
+                     <mat-icon>{{ menuitem.icon }}</mat-icon>
+                     <span>{{ menuitem.name | translate }}</span>
+                     <span fxFlex></span>
+                     <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+                  </a>
+                  <a appAccordionToggle class="relative" mat-ripple href="javascript:;" *ngIf="menuitem.type === 'sub'">
+                     <mat-icon>{{ menuitem.icon }}</mat-icon>
+                     <span>{{ menuitem.name | translate }}</span>
+                     <span fxFlex></span>
+                     <span class="menu-badge mat-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+                     <mat-icon class="menu-caret">arrow_drop_down</mat-icon>
+                  </a>
+                  <mat-nav-list class="sub-menu" *ngIf="menuitem.type === 'sub'">
+                     <mat-list-item *ngFor="let childitem of menuitem.children" routerLinkActive="open">
+                        <a [routerLink]="['/', menuitem.state, childitem.state ]" class="relative" mat-ripple>{{ childitem.name | translate }}</a>
+                     </mat-list-item>
+                  </mat-nav-list>
+               </mat-list-item>
+               <mat-divider></mat-divider>
+            </mat-nav-list>
+         </div>
+      </div>
+   </div>
+   <div class="bg-overlay"></div>
+   </mat-sidenav>
+   <mat-toolbar class="main-header">
+      <div class="horizontal-top-bar w-100">
+        <div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" fxFlex="100">
+         <div class="search-bar" fxFlex>
+            <form class="search-form">
+               <mat-icon>search</mat-icon>
+               <input type="text" placeholder="Search" autofocus="true" />
+            </form>
+         </div>
+         </div>
+         <div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" fxFlex="100">
+          <div class="horizontal-logo">
+            <div class="branding text-center">
+               <h2><i class="fa fa-superpowers" aria-hidden="true"></i> <span> OPTIMA</span>
+               </h2>
+            </div>
+         </div>
+         </div>
+         <div fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="33.33" fxFlex.lg="33.33" fxFlex.xl="33.33" fxFlex="100">
+         <div class="menu-links">
+            <button appToggleFullscreen mat-icon-button>
+               <mat-icon>fullscreen</mat-icon>
+            </button>
+            <button [mat-menu-trigger-for]="user2" mat-icon-button class="ml-xs overflow-visible">
+               <mat-icon>message</mat-icon>
+            </button>
+            <mat-menu #user2="matMenu" class="opt-menu" x-position="after">
+               <div mat-menu-item class="head-menu grad-blue">
+                  Message Menu
+               </div>
+               <button mat-menu-item>
+               <img width="40" src="assets/images/user-1.jpg" alt="">
+               Next Update for angular 5
+               </button>
+               <button mat-menu-item>
+               <img width="40" src="assets/images/user-2.jpg" alt="">
+               Check out our new admin theme
+               </button>
+               <button mat-menu-item>
+               <img width="40" src="assets/images/user-3.jpg" alt="">
+               Expedita quo, laboriosam officia.
+               </button>
+               <button mat-menu-item>
+               <img width="40" src="assets/images/user-4.jpg" alt="">
+               Lorem ipsum dolor sit amet consectetur.
+               </button>
+            </mat-menu>
+            <button [mat-menu-trigger-for]="user1" mat-icon-button class="ml-xs overflow-visible">
+               <mat-icon>reorder</mat-icon>
+               <span class="notification-label">3</span>
+            </button>
+            <mat-menu #user1="matMenu" class="opt-menu" x-position="before">
+               <div mat-menu-item class="head-menu grad-blue">
+                  User Menu
+               </div>
+               <button mat-menu-item>
+                  <mat-icon>show_chart</mat-icon>
+                  Charts
+               </button>
+               <button mat-menu-item>
+                  <mat-icon>navigation</mat-icon>
+                  Maps
+               </button>
+               <button mat-menu-item>
+                  <mat-icon>web</mat-icon>
+                  Calendar Settings
+               </button>
+            </mat-menu>
+            <button (click)="end.toggle()" mat-icon-button class="ml-xs overflow-visible">
+               <mat-icon>notifications</mat-icon>
+               <span class="notification-label">2</span>
+            </button>
+            <button [mat-menu-trigger-for]="user" mat-icon-button class="ml-xs">
+               <mat-icon>person</mat-icon>
+            </button>
+            <mat-menu #user="matMenu" class="opt-menu" x-position="before">
+               <div mat-menu-item class="head-menu grad-blue">
+                  Settings
+               </div>
+               <button mat-menu-item>
+                  <mat-icon>settings</mat-icon>
+                  Setting 
+               </button>
+               <button mat-menu-item>
+                  <mat-icon>account_box</mat-icon>
+                  Profile
+               </button>
+               <button mat-menu-item>
+                  <mat-icon>notifications_off</mat-icon>
+                  Disable notifications
+               </button>
+               <button mat-menu-item>
+                  <mat-icon>exit_to_app</mat-icon>
+                  Sign Out
+               </button>
+            </mat-menu>
+         </div>
+        </div>
+      </div>
+      <div class="vertical-menu w-100">
+      <button (click)="menuToggleFunc()" mat-icon-button class="lines-btn">
+         <mat-icon>menu</mat-icon>
+      </button>
+      <div class="search-bar" fxFlex>
+         <form class="search-form" fxShow="false" fxShow.gt-xs>
+            <mat-icon>search</mat-icon>
+            <input type="text" placeholder="Search" autofocus="true" />
+         </form>
+      </div>
+      <span fxFlex></span>
+      <button appToggleFullscreen mat-icon-button>
+         <mat-icon>fullscreen</mat-icon>
+      </button>
+      <button [mat-menu-trigger-for]="user2" mat-icon-button class="ml-xs overflow-visible">
+         <mat-icon>message</mat-icon>
+      </button>
+      <mat-menu #user2="matMenu" class="opt-menu" x-position="after">
+         <div mat-menu-item class="head-menu grad-blue">
+            Message Menu
+         </div>
+         <button mat-menu-item>
+         <img width="40" src="assets/images/user-1.jpg" alt="">
+         Next Update for angular 5
+         </button>
+         <button mat-menu-item>
+         <img width="40" src="assets/images/user-2.jpg" alt="">
+         Check out our new admin theme
+         </button>
+         <button mat-menu-item>
+         <img width="40" src="assets/images/user-3.jpg" alt="">
+         Expedita quo, laboriosam officia.
+         </button>
+         <button mat-menu-item>
+         <img width="40" src="assets/images/user-4.jpg" alt="">
+         Lorem ipsum dolor sit amet consectetur.
+         </button>
+      </mat-menu>
+      <button [mat-menu-trigger-for]="user1" mat-icon-button class="ml-xs overflow-visible">
+         <mat-icon>reorder</mat-icon>
+         <span class="notification-label">3</span>
+      </button>
+      <mat-menu #user1="matMenu" class="opt-menu" x-position="before">
+         <div mat-menu-item class="head-menu grad-blue">
+            User Menu
+         </div>
+         <button mat-menu-item>
+            <mat-icon>show_chart</mat-icon>
+            Charts
+         </button>
+         <button mat-menu-item>
+            <mat-icon>navigation</mat-icon>
+            Maps
+         </button>
+         <button mat-menu-item>
+            <mat-icon>web</mat-icon>
+            Calendar Settings
+         </button>
+      </mat-menu>
+      <button (click)="end.toggle()" mat-icon-button class="ml-xs overflow-visible">
+         <mat-icon>notifications</mat-icon>
+         <span class="notification-label">2</span>
+      </button>
+      <button [mat-menu-trigger-for]="user" mat-icon-button class="ml-xs">
+         <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #user="matMenu" class="opt-menu" x-position="before">
+         <div mat-menu-item class="head-menu grad-blue">
+            Settings
+         </div>
+         <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            Setting 
+         </button>
+         <button mat-menu-item>
+            <mat-icon>account_box</mat-icon>
+            Profile
+         </button>
+         <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            Disable notifications
+         </button>
+         <button mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon>
+            Sign Out
+         </button>
+      </mat-menu>
+       </div>
+   </mat-toolbar>
+   <div class="horizontal-menu text-center">
+      <nav>
+         <ul class="main-h-list">
+            <li *ngFor="let menuitem of horizontalMenuItems.getAll()">
+               <a [routerLink]="['/'+menuitem.state]" *ngIf="menuitem.type === 'link'">
+               <mat-icon>{{ menuitem.icon }}</mat-icon>
+               <span>{{ menuitem.name | translate }}</span>
+               </a>
+               <a [routerLink]="['/'+menuitem.state]" *ngIf="menuitem.type === 'sub'">
+               <mat-icon>{{ menuitem.icon }}</mat-icon>
+               <span>{{ menuitem.name | translate }}</span>
+               </a>
+               <ul class="dropdown" *ngIf="menuitem.type === 'sub'">
+                  <li *ngFor="let childitem of menuitem.children">
+                     <a [routerLink]="['/'+childitem.state ]">{{ childitem.name | translate }}</a>
+                     <ul class="dropdown" *ngIf="childitem.type === 'super-sub'">
+                        <li *ngFor="let subchild of childitem.subchildren">
+                           <a [routerLink]="['/'+subchild.state ]">{{subchild.name | translate}}</a>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
+            </li>
+         </ul>
+      </nav>
+   </div>
+   <div class="body-container">
+      <router-outlet></router-outlet>
+   </div>
+   <mat-sidenav #end position="end" class="chat-panel" mode="over" opened="false">
+      <mat-tab-group [selectedIndex]="1" mat-stretch-tabs>
+         <mat-tab>
+            <ng-template mat-tab-label>Today</ng-template>
+            <div class="scroll">
+               <mat-list class="pt-1 pb-1">
+                  <mat-list-item>
+                     <div fxLayout="column">
+                        <h2 class="ma-0">{{ today | date:'EEEE' }}</h2>
+                        <h6 class="mat-text-muted ma-0"><span>{{ today | date:'dd' }}</span>&nbsp;<span>{{ today | date:'MMMM' }}</span></h6>
+                     </div>
+                  </mat-list-item>
+               </mat-list>
+               <mat-nav-list>
+                  <mat-divider></mat-divider>
+                  <h3 mat-subheader class="text-uppercase font-weight-bold">Projects Stats</h3>
+                  <mat-list-item>
+                     <p class="text-mat" mat-line>Project A</p>
+                     <mat-progress-bar mat-line mode="determinate" color="warn" value="20"></mat-progress-bar>
+                  </mat-list-item>
+                  <mat-list-item>
+                     <p class="text-mat" mat-line>Project B </p>
+                     <mat-progress-bar mat-line mode="determinate" color="accent" value="80"></mat-progress-bar>
+                  </mat-list-item>
+                  <mat-list-item>
+                     <p class="text-mat" mat-line>Project C</p>
+                     <mat-progress-bar mat-line mode="determinate" value="30"></mat-progress-bar>
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+                  <h3 mat-subheader class="text-uppercase font-weight-bold">Todo</h3>
+                  <mat-list-item>
+                     <a mat-line href="javascript:;">Consectetur adipisicing elit. Nemo omnis.</a>
+                     <p mat-line class="mat-text-muted text-mat">2:45PM</p>
+                  </mat-list-item>
+                  <mat-list-item>
+                     <a mat-line href="javascript:;"> Temporibus cumque cupiditate </a>
+                     <p mat-line class="mat-text-muted text-mat">3:20PM</p>
+                  </mat-list-item>
+                  <mat-list-item>
+                     <a mat-line href="javascript:;">Libero voluptatibus harum quis accusamus</a>
+                     <p mat-line class="mat-text-muted text-mat">16:00PM</p>
+                  </mat-list-item>
+               </mat-nav-list>
+            </div>
+         </mat-tab>
+         <mat-tab>
+            <ng-template mat-tab-label>Notifications</ng-template>
+            <div class="scroll">
+               <mat-nav-list>
+                  <mat-list-item>
+                     <mat-icon mat-list-avatar class="mat-text-primary">people</mat-icon>
+                     <h4 mat-line>Social</h4>
+                     <p mat-line> 5 new members joined today</p>
+                  </mat-list-item>
+                  <mat-list-item>
+                     <mat-icon mat-list-avatar class="mat-text-warn">local_offer</mat-icon>
+                     <h4 mat-line>Promotions</h4>
+                     <p mat-line>Updated your email
+                     </p>
+                  </mat-list-item>
+                  <mat-list-item>
+                     <mat-icon mat-list-avatar class="mat-text-accent">info</mat-icon>
+                     <h4 mat-line>Updates</h4>
+                     <p mat-line> 15 new product added</p>
+                  </mat-list-item>
+                  <mat-list-item>
+                     <mat-icon mat-list-avatar class="mat-deep-purple">delete_sweep</mat-icon>
+                     <h4 mat-line> 2 order cancelled</h4>
+                     <span class="text-mat mat-text-muted" mat-line>{{ 1427207139000 | date: 'fullDate' }}</span>
+                  </mat-list-item>
+                  <mat-list-item>
+                     <mat-icon mat-list-avatar>check_circle</mat-icon>
+                     <h4 mat-line>System Scan completed</h4>
+                     <span class="text-mat mat-text-muted" mat-line>{{ 1427412725000 | date: 'fullDate' }}</span>
+                  </mat-list-item>
+                  <mat-list-item>
+                     <mat-icon mat-list-avatar>person_add</mat-icon>
+                     <h4 mat-line>4 Users connected</h4>
+                     <span class="text-mat mat-text-muted" mat-line>{{ 1428275520000 | date: 'fullDate' }}</span>
+                  </mat-list-item>
+               </mat-nav-list>
+            </div>
+         </mat-tab>
+      </mat-tab-group>
+   </mat-sidenav>
+</mat-sidenav-container>
+<!-- /Demo Purposes Only -->
+</div>
+

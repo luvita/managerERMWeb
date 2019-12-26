@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/lib/perfect-scrollbar.classes.ts"],"names":[],"mappings":";;AAAA;IAAA;IAMA,CAAC;IAAD,eAAC;AAAD,CANA,AAMC,IAAA;AANY,4BAAQ","file":"perfect-scrollbar.classes.js","sourceRoot":"","sourcesContent":["export class Geometry {\n  x: number;\n  y: number;\n\n  w: number;\n  h: number;\n}\n"]}

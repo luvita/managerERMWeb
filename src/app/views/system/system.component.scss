@@ -1,0 +1,21 @@
+@import "../../../assets/styles/scss/components/social";
+:host {
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-top: -5px;
+  display: block;
+}
+.wrapper {
+  margin: 6px;
+}
+
+.content-data{
+    h2{
+        font-size: 1.5rem;
+    }
+}
+@media(max-width:767px){
+    .profile-center{
+        text-align: center;
+    }
+}

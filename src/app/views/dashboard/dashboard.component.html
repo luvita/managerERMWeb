@@ -1,0 +1,73 @@
+<div fxLayout="row wrap">
+   <div fxFlex.gt-sm="33.33%" fxFlex="100" class="m-gap p-gap">
+      <mat-card>
+         <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+            Revenue &nbsp;
+            <span fxFlex></span>
+            <button mat-icon-button mat-button-sm [mat-menu-trigger-for]="card1" aria-label="Open card menu">
+               <mat-icon>more_vert</mat-icon>
+            </button>
+         </mat-card-title>
+         <mat-menu #card1="matMenu" x-position="before">
+            <button mat-menu-item>
+               <mat-icon>settings</mat-icon>
+               Settings
+            </button>
+            <button mat-menu-item>
+               <mat-icon>more</mat-icon>
+               View More
+            </button>
+            <button mat-menu-item>
+               <mat-icon>notifications_off</mat-icon>
+               Disable notifications
+            </button>
+            <button mat-menu-item>
+               <mat-icon>exit_to_app</mat-icon>
+               Remove Panel
+            </button>
+         </mat-menu>
+         <hr>
+         <mat-card-content>
+            <canvas height="200" baseChart class="chart"
+            [data]="pieChartData"
+            [options]="doughnutOptions"
+            [colors]="doughnutChartColors"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"></canvas>
+         </mat-card-content>
+      </mat-card>
+   </div>
+   <div fxFlex.gt-sm="33.33%" fxFlex.gt-xs="50" fxFlex="100" class="m-gap p-gap">
+      <mat-card>
+         <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+            Yearly Sales &nbsp;
+            <span fxFlex></span>
+            <button mat-icon-button mat-button-sm [mat-menu-trigger-for]="card2" aria-label="Open card menu">
+               <mat-icon>more_vert</mat-icon>
+            </button>
+         </mat-card-title>
+         <mat-menu #card2="matMenu" x-position="before">
+            <button mat-menu-item>
+               <mat-icon>settings</mat-icon>
+               Settings
+            </button>
+            <button mat-menu-item>
+               <mat-icon>more</mat-icon>
+               View More
+            </button>
+            <button mat-menu-item>
+               <mat-icon>notifications_off</mat-icon>
+               Disable notifications
+            </button>
+            <button mat-menu-item>
+               <mat-icon>exit_to_app</mat-icon>
+               Remove Panel
+            </button>
+         </mat-menu>
+         <hr>
+         <mat-card-content>
+            <canvas height="200" baseChart class="chart" [datasets]="ComboChartData" [labels]="comboChartLabels" [options]="ComboChartOptions" [colors]="chartColors" [legend]="comboChartLegend" [chartType]="barChartType"></canvas>
+         </mat-card-content>
+      </mat-card>
+   </div>
+</div>

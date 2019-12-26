@@ -1,0 +1,29 @@
+<div class="relative">
+    <div class="form-bg">
+        <div fxLayout="row" fxLayoutAlign="center start" class="pt-2">
+            <div fxLayout="column" fxFlex.xl="40" fxFlex.lg="40" fxFlex.md="50" fxFlex.sm="80" fxFlex.xs="90">
+                <mat-card class="login-session">
+                    <div>
+                        <h2 class="base-border">Login Form</h2>
+                        <p>Enter Your Login Details</p>
+                        <form #form="ngForm" (ngSubmit)="login()">
+                            <div fxLayout="column" fxLayoutAlign="start stretch">
+                                <mat-form-field style="width: 100%">
+                                    <input matInput placeholder="E-Mail" type="text" name="email" required [(ngModel)]="email">
+                                </mat-form-field>
+                                <mat-form-field style="width: 100%" class="mb-1">
+                                    <input matInput placeholder="Password" type="password" name="password" required [(ngModel)]="password">
+                                </mat-form-field>
+                                <button class="mat-green" mat-raised-button>SIGN IN</button>
+                                <p class="mat-text-warn mb-0">Forgot password?</p>
+                                <p class="mb-0">Don't have an account? <a [routerLink]="['/register']" class="mat-text-primary">Register Here</a></p>
+                            </div>
+                            <div>
+                                <p>Sign in using</p> <a href="#" class="shared-icon mr-1 mat-blue"><i class="fa fa-facebook fa-lg mr-1"></i> Facebook</a><a href="#" class="shared-icon mat-red"><i class="fa fa-google fa-lg mr-1"></i>Google</a></div>
+                        </form>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

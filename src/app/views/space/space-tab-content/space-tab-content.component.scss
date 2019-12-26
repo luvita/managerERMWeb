@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+  }
+
+.white-icon {
+    color: blue;
+}
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+.white-icon svg {
+    fill: blue;
+}
+
+.mat-header-cell, .mat-cell {    
+    text-align: center;    
+}
+
+.mat-table {
+    overflow: auto; 
+  }
+
+  .top-height {
+    display: flex !important;
+    align-items: flex-start !important;
+  }
