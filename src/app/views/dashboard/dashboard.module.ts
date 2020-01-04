@@ -1,30 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MatIconModule, MatCardModule, MatButtonModule, MatListModule, MatProgressBarModule, MatMenuModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
-
-import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { NgxChartsModule} from '@swimlane/ngx-charts';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutes } from './dashboard.routing';
+import { MatIconModule, MatButtonModule, MatPaginatorModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(DashboardRoutes),
     MatIconModule,
-    MatCardModule,
     MatButtonModule,
-    MatListModule,
-    MatProgressBarModule,
-    MatMenuModule,
-    ChartsModule,
-    NgxChartsModule,
-    NgxDatatableModule,
-    FlexLayoutModule
+    MatInputModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [ DashboardComponent ]
 })

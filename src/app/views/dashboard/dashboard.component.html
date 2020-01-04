@@ -1,73 +1,94 @@
-<div fxLayout="row wrap">
-   <div fxFlex.gt-sm="33.33%" fxFlex="100" class="m-gap p-gap">
-      <mat-card>
-         <mat-card-title fxLayout="row" fxLayoutAlign="start center">
-            Revenue &nbsp;
-            <span fxFlex></span>
-            <button mat-icon-button mat-button-sm [mat-menu-trigger-for]="card1" aria-label="Open card menu">
-               <mat-icon>more_vert</mat-icon>
-            </button>
-         </mat-card-title>
-         <mat-menu #card1="matMenu" x-position="before">
-            <button mat-menu-item>
-               <mat-icon>settings</mat-icon>
-               Settings
-            </button>
-            <button mat-menu-item>
-               <mat-icon>more</mat-icon>
-               View More
-            </button>
-            <button mat-menu-item>
-               <mat-icon>notifications_off</mat-icon>
-               Disable notifications
-            </button>
-            <button mat-menu-item>
-               <mat-icon>exit_to_app</mat-icon>
-               Remove Panel
-            </button>
-         </mat-menu>
-         <hr>
-         <mat-card-content>
-            <canvas height="200" baseChart class="chart"
-            [data]="pieChartData"
-            [options]="doughnutOptions"
-            [colors]="doughnutChartColors"
-            [labels]="pieChartLabels"
-            [chartType]="pieChartType"></canvas>
-         </mat-card-content>
-      </mat-card>
-   </div>
-   <div fxFlex.gt-sm="33.33%" fxFlex.gt-xs="50" fxFlex="100" class="m-gap p-gap">
-      <mat-card>
-         <mat-card-title fxLayout="row" fxLayoutAlign="start center">
-            Yearly Sales &nbsp;
-            <span fxFlex></span>
-            <button mat-icon-button mat-button-sm [mat-menu-trigger-for]="card2" aria-label="Open card menu">
-               <mat-icon>more_vert</mat-icon>
-            </button>
-         </mat-card-title>
-         <mat-menu #card2="matMenu" x-position="before">
-            <button mat-menu-item>
-               <mat-icon>settings</mat-icon>
-               Settings
-            </button>
-            <button mat-menu-item>
-               <mat-icon>more</mat-icon>
-               View More
-            </button>
-            <button mat-menu-item>
-               <mat-icon>notifications_off</mat-icon>
-               Disable notifications
-            </button>
-            <button mat-menu-item>
-               <mat-icon>exit_to_app</mat-icon>
-               Remove Panel
-            </button>
-         </mat-menu>
-         <hr>
-         <mat-card-content>
-            <canvas height="200" baseChart class="chart" [datasets]="ComboChartData" [labels]="comboChartLabels" [options]="ComboChartOptions" [colors]="chartColors" [legend]="comboChartLegend" [chartType]="barChartType"></canvas>
-         </mat-card-content>
-      </mat-card>
-   </div>
+
+<div class="btn-dashboard">
+    <span>
+        <button mat-raised-button color="warn">Thêm user</button>
+    </span>
+    <span class="top-feature">
+        <button mat-raised-button color="warn">Sửa</button>
+    </span>
+    <span class="top-feature">
+        <button mat-raised-button color="warn">Nạp tiền</button>
+    </span>
+    <span class="top-feature">
+        <button mat-raised-button color="warn">Rút tiền</button>
+    </span>
+    <span class="top-feature">
+        <button mat-raised-button color="warn">Lịch sử ví</button>
+    </span>
+    <span class="top-feature">
+        <button mat-raised-button color="warn">Danh sách đơn hàng</button>
+    </span>
+    <span class="top-feature">
+        <button mat-raised-button color="warn">Đơn hàng mới</button>
+    </span>    
 </div>
+
+<h2 class="title-lst-client">Danh sách thành viên</h2>
+
+
+
+
+<table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="name">
+      <th class="header" mat-header-cell *matHeaderCellDef>
+        <div class="tbTitle">
+          Tenant Name
+        </div>
+        
+        <mat-form-field class="filter" floatLabel="never">
+          <input matInput [formControl]="nameFilter">
+        </mat-form-field>
+      </th>
+      <td mat-cell *matCellDef="let person">{{person.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th class="header" mat-header-cell *matHeaderCellDef>
+        <div class="tbTitle">
+          ID
+        </div>
+        
+        <mat-form-field class="filter" floatLabel="never">
+          <input matInput [formControl]="idFilter">
+        </mat-form-field>
+      </th>
+      <td mat-cell *matCellDef="let person">{{person.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="favouriteColour">
+      <th class="header" mat-header-cell *matHeaderCellDef>
+        <div class="tbTitle">
+          Favourite Colour
+        </div>
+        
+        <mat-form-field class="filter" floatLabel="never">
+          <input matInput [formControl]="colourFilter">
+        </mat-form-field>
+      </th>
+      <td mat-cell *matCellDef="let person">{{person.colour}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="pet">
+      <th class="header" mat-header-cell *matHeaderCellDef>
+        <div class="tbTitle">
+          Pet
+        </div>
+        
+        <mat-form-field class="filter" floatLabel="never">
+          <input matInput [formControl]="petFilter">
+        </mat-form-field>
+      </th>
+      <td mat-cell *matCellDef="let person">{{person.pet}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row 
+      *matRowDef="let person; columns: columnsToDisplay"></tr>
+  </table>
+
+  <mat-paginator #paginator
+                 [pageSize]="3"
+                 [pageSizeOptions]="[3, 5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
