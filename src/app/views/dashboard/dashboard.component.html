@@ -1,94 +1,95 @@
-
 <div class="btn-dashboard">
-    <span>
-        <button mat-raised-button color="warn">Thêm user</button>
-    </span>
-    <span class="top-feature">
-        <button mat-raised-button color="warn">Sửa</button>
-    </span>
-    <span class="top-feature">
-        <button mat-raised-button color="warn">Nạp tiền</button>
-    </span>
-    <span class="top-feature">
-        <button mat-raised-button color="warn">Rút tiền</button>
-    </span>
-    <span class="top-feature">
-        <button mat-raised-button color="warn">Lịch sử ví</button>
-    </span>
-    <span class="top-feature">
-        <button mat-raised-button color="warn">Danh sách đơn hàng</button>
-    </span>
-    <span class="top-feature">
-        <button mat-raised-button color="warn">Đơn hàng mới</button>
-    </span>    
+  <span>
+      <button mat-raised-button color="warn">Thêm user</button>
+  </span>
+  <span class="top-feature">
+      <button mat-raised-button color="warn">Sửa</button>
+  </span>
+  <span class="top-feature">
+      <button mat-raised-button color="warn">Nạp tiền</button>
+  </span>
+  <span class="top-feature">
+      <button mat-raised-button color="warn">Rút tiền</button>
+  </span>
+  <span class="top-feature">
+      <button mat-raised-button color="warn">Lịch sử ví</button>
+  </span>
+  <span class="top-feature">
+      <button mat-raised-button color="warn">Danh sách đơn hàng</button>
+  </span>
+  <span class="top-feature">
+      <button mat-raised-button color="warn">Đơn hàng mới</button>
+  </span>    
 </div>
 
 <h2 class="title-lst-client">Danh sách thành viên</h2>
 
-
-
-
-<table mat-table [dataSource]="dataSource">
-
-    <ng-container matColumnDef="name">
-      <th class="header" mat-header-cell *matHeaderCellDef>
-        <div class="tbTitle">
-          Tenant Name
-        </div>
-        
-        <mat-form-field class="filter" floatLabel="never">
-          <input matInput [formControl]="nameFilter">
-        </mat-form-field>
-      </th>
-      <td mat-cell *matCellDef="let person">{{person.name}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="id">
-      <th class="header" mat-header-cell *matHeaderCellDef>
-        <div class="tbTitle">
-          ID
-        </div>
-        
-        <mat-form-field class="filter" floatLabel="never">
-          <input matInput [formControl]="idFilter">
-        </mat-form-field>
-      </th>
-      <td mat-cell *matCellDef="let person">{{person.id}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="favouriteColour">
-      <th class="header" mat-header-cell *matHeaderCellDef>
-        <div class="tbTitle">
-          Favourite Colour
-        </div>
-        
-        <mat-form-field class="filter" floatLabel="never">
-          <input matInput [formControl]="colourFilter">
-        </mat-form-field>
-      </th>
-      <td mat-cell *matCellDef="let person">{{person.colour}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="pet">
-      <th class="header" mat-header-cell *matHeaderCellDef>
-        <div class="tbTitle">
-          Pet
-        </div>
-        
-        <mat-form-field class="filter" floatLabel="never">
-          <input matInput [formControl]="petFilter">
-        </mat-form-field>
-      </th>
-      <td mat-cell *matCellDef="let person">{{person.pet}}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-    <tr mat-row 
-      *matRowDef="let person; columns: columnsToDisplay"></tr>
-  </table>
-
-  <mat-paginator #paginator
-                 [pageSize]="3"
-                 [pageSizeOptions]="[3, 5, 10, 20]"
-                 [showFirstLastButtons]="true">
-  </mat-paginator>
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <mat-header-cell class="header" *matHeaderCellDef> 
+          <div>
+            <div  class="tbTitle">Tenant Name</div>
+          
+            <mat-form-field class="filter" >
+              <input matInput [formControl]="nameFilter">
+            </mat-form-field>
+          </div>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell class="header" *matHeaderCellDef>
+          <div>
+            <div  class="tbTitle">Tenant Name</div>
+          
+            <mat-form-field class="filter" >
+              <input matInput [formControl]="idFilter">
+            </mat-form-field>
+          </div>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="weight">
+        <mat-header-cell class="header" *matHeaderCellDef>
+          <div>
+            <div  class="tbTitle">Tenant Name</div>
+          
+            <mat-form-field class="filter" >
+              <input matInput [formControl]="colourFilter">
+            </mat-form-field>
+          </div>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container  matColumnDef="symbol">
+        <mat-header-cell class="header" *matHeaderCellDef>
+          <div>
+            <div  class="tbTitle">Tenant Name</div>
+          
+            <mat-form-field class="filter" >
+              <input matInput [formControl]="petFilter">
+            </mat-form-field>
+          </div>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    <mat-paginator #paginator
+                   [pageSize]="3"
+                   [pageSizeOptions]="[3, 5, 10, 20]"
+                   [showFirstLastButtons]="true">
+    </mat-paginator>
+  </div>
