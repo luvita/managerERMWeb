@@ -1,4 +1,5 @@
-import { Component, OnInit,ViewEncapsulation } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 @Component({
     selector: 'ms-basic-cards',
@@ -7,6 +8,9 @@ import { Component, OnInit,ViewEncapsulation } from '@angular/core';
     encapsulation: ViewEncapsulation.None
 })
 export class BasicCardComponent implements OnInit {
+  
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
 
   constructor() {}
 
@@ -15,6 +19,18 @@ export class BasicCardComponent implements OnInit {
   }
 	
 }
+
+export interface Element {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+
+const ELEMENT_DATA: Element[] = [
+  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+];
+
 
 
 

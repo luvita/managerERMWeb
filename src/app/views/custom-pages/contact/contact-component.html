@@ -1,61 +1,65 @@
-<div class="title-block about-w hero contact-w text-center">
-    <div class="hero-overlay"></div>
-    <div fxLayout="row wrap"  fxLayoutAlign="center start" class="mb-3">
-        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" class="m-gap p-gap relative">
-            <h2 class="text-white">
-                <span class="more-bold">Hey.</span>
-            </h2>
-            <h2 class="text-white">What can we help you with?</h2>
-        </div>
-    </div>
-    <div fxLayout="row wrap"  fxLayoutAlign="center end">
-        <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100" fxLayoutAlign="center center" class="border-right">
-            <div class="text-white relative contact-info">
-                <h2 class="font-weight-bold text-white">Become a client.</h2>
-                <p><a href="tel:+123 456 789" class="text-white">+123 456 789</a></p>
-                <p> <a href="hello@abcd.com" class="text-white">hello@abcd.com</a></p>
-            </div>
-        </div>
-        <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100" fxLayoutAlign="center center">
-            <div class="text-white relative contact-info">
-                <h2 class="font-weight-bold text-white">Need Support.</h2>
-                <p><a href="tel:+123 456 789" class="text-white">+123 456 789</a></p>
-                <p> <a href="hello@abcd.com" class="text-white">support@abcd.com</a></p>
-            </div>
-        </div>
-    </div>
-</div>
-<mat-card class="p-2">
-    <div class="mb-3">
-        <mat-card class="p-3">
-            <h2 class="font-weight-bold text-center mb-2">Drop us a Line</h2>
-            <form #form="ngForm">
-                <div fxLayout="column" fxLayoutAlign="start stretch">
-                    <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Name" type="text" name="name" required>
-                    </mat-form-field>
-                    <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Company Name" type="text" name="cname" required>
-                    </mat-form-field>
-                    <mat-form-field style="width: 100%">
-                        <input matInput placeholder="Country" type="text" name="ctry" required>
-                    </mat-form-field>
-                    <mat-form-field style="width: 100%">
-                        <input matInput placeholder="E Mail" type="email" name="email" required>
-                    </mat-form-field>
-                <mat-form-field style="width: 100%" class="mb-2">
-                        <input matInput placeholder="Write Message" type="text" name="text1" required>
-                    </mat-form-field>
-                    <button style="width: 30%" class="mat-green" mat-raised-button>Send</button>
-                </div>
-            </form>
-        </mat-card>
-
-    </div>
-    <div>
-        <mat-card class="p-3 text-center">
-            <h2 class="mb-2">Follow Us On</h2>
-            <a href="#" class="shared-icon mr-1 mb-1 mat-blue"><i class="fa fa-facebook fa-lg"></i></a><a href="#" class="mr-1 mb-1 shared-icon mat-red"><i class="fa fa-google fa-lg"></i></a>
-        </mat-card>
-    </div>
-</mat-card>
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div fxLayout="row wrap" >
+            <div class="content-info" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="100" fxFlex.lg="100" fxFlex.xl="100">
+              <div class="column" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="33.33" fxFlex.xl="33.33">
+                 a
+              </div>
+              <div class="column" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="33.33" fxFlex.xl="33.33">
+                <div>CP73539731</div>
+                <div>Shop:</div>
+                <div>Số lượng:</div>
+                <div>Cân nặng:</div>
+                <div>Loại:</div>
+              </div>
+           
+              <div class="column" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="50" fxFlex.lg="33.33" fxFlex.xl="33.33">
+                <div>Đang vận chuyển TQ-VN</div>
+                <div>dffdsgf</div>
+                <div>32/32-</div>
+                <div>0.3kg</div>
+                <div>Mua hàng hộ</div>
+              </div>
+           </div >
+          </div>
+        </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="weight">
+        <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="symbol">
+        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    <mat-paginator #paginator
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 20]"
+                   [showFirstLastButtons]="true">
+    </mat-paginator>
+  </div>
+  
+  
+  <!-- Copyright 2018 Google Inc. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->

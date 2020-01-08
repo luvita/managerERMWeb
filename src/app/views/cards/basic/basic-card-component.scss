@@ -1,56 +1,82 @@
-//colors
-$white: #fff;
-$black_10: rgba(0, 0, 0, 0.1);
-$black_30: rgba(0, 0, 0, 0.3);
-$color_red_orange_approx: #f44336;
-$black_60: rgba(0, 0, 0, 0.6);
+.post-module {
+    .content-info {
+        margin-top: 20px;
+    }
+    .column {
+        .post-meta {
+            padding: 12px 0px 12px 0px;
+            border-top: 1px solid #a2a2a1;
+        }
+        .bottom-meta {
+            border-bottom: 1px solid #a2a2a1;
+        }
+        .client-name {
+            font-size: 16px;
+        }
+        .client-id {
+            color: #a2a2a1;
+            font-size: 14px;
+            .id {
+                font-size: 11px;
+                color: white;
+                padding: 2px;
+                border-radius: 3px;
+                background-color: green;
+            }
+        }
+        .timestamp {
+            .note {
+                margin-right: 10px;
+                color: #a2a2a1;
+            }
+        }
+    }
+}
 
-.user-content {
-	padding: 2rem 1.5rem;
+.account-money {
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-top-width: 3px !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+    -webkit-transition: all 0.3s linear 0s;
+    -moz-transition: all 0.3s linear 0s;
+    -ms-transition: all 0.3s linear 0s;
+    -o-transition: all 0.3s linear 0s;
+    transition: all 0.3s linear 0s;
+    background: #FFFFFF;
+    margin-top: 15px;
+    padding-left: 10px;
 }
-.user-list-card {
-	background: $white;
-	box-shadow: 0 2px 6px $black_10;
 
-	transition: all 0.3s ease-in-out 0s;
-	&:hover {
-		box-shadow: 0 0 21px $black_30;
-	}
-}
-.user-name {
-	font-size: 1.2rem;
-}
-.user-card-cover {
-	padding: 4rem 1rem;
-	position: relative;
-}
-.user-thumb {
-	position: absolute;
-	bottom: -35%;
-	img {
-		border: 5px solid $white;
-		border-radius: 100%;
-		height: 75px;
-		width: 75px;
-	}
-}
-.btn-red {
-	background-color: $color_red_orange_approx;
-	color: $white;
-	border: 1px solid $color_red_orange_approx;
-}
-.user-card-stats {
-	margin-bottom: 0;
-	li {
-		display: inline-block;
-		a {
-			color: $black_60;
-			font-size: 1rem;
-			font-weight: bold;
-			padding: 0 0.3rem;
-		}
-	}
-}
-.user-list-wrapper > .user-card-w {
-	padding: 1rem;
-}
+.header {
+    padding: 0px !important;
+    text-align: center;
+    display: block;
+    .tbTitle {
+      color: white;
+      background-color: #f44335;
+      font-style: inherit;
+      padding: 10px;
+      font-size: 15px;
+      margin: 0px 1px 0px 1px !important;
+    }
+    .mat-form-field {
+      margin: 5px 10px 0px 10px;
+      display: block;
+    }
+    ::ng-deep .mat-form-field-underline {
+      background-color: gray;
+    }
+    ::ng-deep .mat-form-field-flex {
+      border: 1px solid gray;
+    }
+  }
+
+  .content-info {
+    //   padding: 0px 20px 0px 20px;
+      margin-top: 10px;
+  }
+  
